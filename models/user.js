@@ -1,3 +1,4 @@
+const { string } = require('@hapi/joi')
 const mongoose = require('mongoose')
 
 const user_schema = mongoose.Schema({
@@ -14,7 +15,7 @@ const user_schema = mongoose.Schema({
         max: 256
     },
     celular:{
-        type: BigInt,
+        type: String,
         require: false,
         min: 10,
         max: 10

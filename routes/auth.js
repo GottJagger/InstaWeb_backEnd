@@ -1,12 +1,13 @@
 const express = require('express');
+const user_create_2 = require("../services/auth")
+const User = require('../models/user')
 const routeAuth = express.Router();
 
+routeAuth.post('/register', async(req, res) => {
 
-routeAuth.post('/register', (req, res) => {
-    console.log('mi cuerpo',req.body);
-  res.json({
-    message: 'Estoy en el registro'
-  });
+    const respuesta = await user_create_2(req.body)
+    res.json(respuesta)
+
 });
 
 routeAuth.get('/login', (req, res) => {
@@ -17,11 +18,3 @@ routeAuth.get('/login', (req, res) => {
 
 module.exports = routeAuth;
 
-/* const User = require('./models/user')
-const mi_user = {
-    name: 'Jose David Chagui',
-    email: 'jdchagui@uninorte.edu.co',
-    celular: 3156280895,
-    password:"Timecha12",
-}
-new User(mi_user).save() */
