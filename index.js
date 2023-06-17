@@ -1,11 +1,13 @@
-const express = require('express')
-const auth_route = require('.routes/auth')
-require('dotenv').config()
+const express = require('express');
+const authRoute = require('./routes/auth');
+require('dotenv').config();
 
-const app= express()
+const app = express();
 
-app.use("/api",auth_route)
+app.use('/api', authRoute);
 
-const port = process.env.PORT || 3200
+const port = process.env.PORT || 3200;
 
-app.listen(port,()=> console.log(`server running on port ${port}`))
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});

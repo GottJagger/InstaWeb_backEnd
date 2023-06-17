@@ -1,17 +1,16 @@
-const express = require('express')
+const express = require('express');
+const routeAuth = express.Router();
 
-const route_auth = express.Router()
+routeAuth.post('/register', (req, res) => {
+  res.json({
+    message: 'Estoy en el registro'
+  });
+});
 
-route_auth.post('/register',(req,res)=>{
-    res.json({
-        message:'estoy en el registro'
-    })
-})
+routeAuth.get('/login', (req, res) => {
+  res.json({
+    message: 'Estoy en el login'
+  });
+});
 
-route_auth.get('/login',(req,res)=>{
-    res.json({
-        message:'Estoy en el login'
-    })
-})
-
-module.exports = route_auth
+module.exports = routeAuth;
