@@ -1,20 +1,25 @@
 const express = require('express');
-const user_create_2 = require("../services/auth")
+const {create_user,login_user,deleteAllUsers} = require("../services/auth")
 const User = require('../models/user')
 const routeAuth = express.Router();
 
 routeAuth.post('/register', async(req, res) => {
 
-    const respuesta = await user_create_2(req.body)
+    const respuesta = await create_user(req.body)
     res.json(respuesta)
 
 });
 
-routeAuth.get('/login', (req, res) => {
-  res.json({
-    message: 'Estoy en el login'
-  });
+routeAuth.post('/login', async (req, res) => {
+    const respuesta = await login_user(req.body)
+    res.json(respuesta)
 });
+
+routeAuth.delete('/users', async (req, res) => {
+    const respuesta = await deleteAllUsers();
+    res.json(respuesta);
+  });
+
 
 module.exports = routeAuth;
 
