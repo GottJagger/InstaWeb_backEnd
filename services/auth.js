@@ -9,6 +9,10 @@ const user_regex = hapi.object({
     password:hapi.string().min(3).max(256).required()
 })
 
+const login_regex = hapi.object({
+    email: hapi.string().min(6).max(255).email().required(),
+    password:hapi.string().min(3).max(256).required()
+})
 
 const create_user = async user_params => {
 
@@ -46,10 +50,6 @@ const create_user = async user_params => {
     }
 }
 
-const login_regex = hapi.object({
-    email: hapi.string().min(6).max(255).email().required(),
-    password:hapi.string().min(3).max(256).required()
-})
 
 const login_user = async credential =>{
 
