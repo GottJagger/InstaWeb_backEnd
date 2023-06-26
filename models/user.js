@@ -26,6 +26,10 @@ const user_schema = mongoose.Schema({
         min: 6,
         max: 256
     },
+    imagenes: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'photo'
+    },
     create_at:{
         type: Date,
         default: Date.now

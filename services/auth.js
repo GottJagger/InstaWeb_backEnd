@@ -1,6 +1,7 @@
 const hapi = require('@hapi/joi')
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
+const jwt = require("jsonwebtoken")
 
 const user_regex = hapi.object({
     name: hapi.string().min(3).max(256),
@@ -74,8 +75,12 @@ const login_user = async credential =>{
         message:"contraseña invalida"
     }
 
+    const token = jwt.sign({
+        user_id: user_bd._id
+    }, process.env.SECRET_TOKEN)
     return {
-        message:"bienvenido!"
+        message:"bienvenido!",
+        token
     }
 
 }
